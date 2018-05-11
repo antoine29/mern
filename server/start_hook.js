@@ -1,5 +1,5 @@
-require ('babel-register')({
+require('babel-register')({
     presets: ['node8']
-});
-
-require('./server.js')
+  });
+  
+  require('./server.js');

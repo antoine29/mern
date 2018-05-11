@@ -8,4 +8,5 @@ import IssueList from './IssueList.jsx';
 const contentNode = document.getElementById('contents');
 // const issues = [];
 ReactDOM.render(<IssueList />, contentNode);
-// if (module.hot) module.hot.accept();
+
+if (module.hot) module.hot.accept();

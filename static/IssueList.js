@@ -207,11 +207,6 @@ var IssueList = function (_React$Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'WEEEEE'
-        ),
-        _react2.default.createElement(
-          'h1',
-          null,
           'Issue Tracker'
         ),
         _react2.default.createElement(_IssueFilter2.default, null),
