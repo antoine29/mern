@@ -8,6 +8,7 @@ import IssueFilter from './IssueFilter.jsx';
 const IssueRow = (props) => (
   <tr>
     <td>{props.issue._id}</td>
+    {/* <td>hola</td> */}
     <td>{props.issue.status}</td>
     <td>{props.issue.owner}</td>
     <td>{props.issue.created.toDateString()}</td>
