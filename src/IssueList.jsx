@@ -1,14 +1,15 @@
-//Originial nOOO borrar
+// Originial nOOO borrar
 import React from 'react';
+
 import 'whatwg-fetch'
 
 import IssueAdd from './IssueAdd.jsx';
+
 import IssueFilter from './IssueFilter.jsx';
 
-const IssueRow = (props) => (
+const IssueRow = props => (
   <tr>
     <td>{props.issue._id}</td>
-    {/* <td>hola</td> */}
     <td>{props.issue.status}</td>
     <td>{props.issue.owner}</td>
     <td>{props.issue.created.toDateString()}</td>
@@ -16,7 +17,7 @@ const IssueRow = (props) => (
     <td>{props.issue.completionDate ? props.issue.completionDate.toDateString() : ''}</td>
     <td>{props.issue.title}</td>
   </tr>
-)
+);
 
 function IssueTable(props) {
   const issueRows = props.issues.map(issue => <IssueRow key={issue._id} issue={issue} />)
@@ -54,22 +55,22 @@ export default class IssueList extends React.Component {
   }
 
   loadData() {
-    fetch('/api/issues').then(response => {
+    fetch('/api/issues').then((response) => {
       if (response.ok) {
-        response.json().then(data => {
+        response.json().then((data) => {
           console.log("Total count of records: ", data._metadata.total_count);
-          data.records.forEach(issue => {
+          data.records.forEach((issue) => {
             issue.created = new Date(issue.created);
             if (issue.completionDate) issue.completionDate = new Date(issue.completionDate);
           });
           this.setState({ issues: data.records });
         });
-      }else {
-        response.json().then(error => {
-          alert("Failed to fetch issues: " + error.message)
+      } else {
+        response.json().then((error) => {
+          alert("Failed to fetch issues: " + error.message);
         });
       }
-    }).catch(err => {
+    }).catch((err) => {
       alert("Error in fetching data from server: ", err);
     });
   }
@@ -79,20 +80,20 @@ export default class IssueList extends React.Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newIssue)
-    }).then(response => {
+    }).then((response) => {
       if (response.ok) {
-        response.json().then(updatedIssue => {
+        response.json().then((updatedIssue) => {
           updatedIssue.created = new Date(updatedIssue.created);
           if (updatedIssue.completionDate) updatedIssue.completionDate = new Date(updatedIssue.completionDate);
           const newIssues = this.state.issues.concat(updatedIssue);
           this.setState({ issues: newIssues });
         });
-      }else {
-        response.json().then(error => {
+      } else {
+        response.json().then((error) => {
           alert("Failed to add issue: " + error.message);
         });
       }
-    }).catch(err => {
+    }).catch((err) => {
       alert("Error in sending data to server: " + err.message);
     });
   }

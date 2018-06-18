@@ -22,6 +22,9 @@ ReactDOM.render(component, contentNode);
 //sweetAlert
 //IssueList
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 import IssueList from './IssueList.jsx';
 //import IssueAdd from './IssueAdd.jsx';
 
@@ -236,3 +239,5 @@ class IssueAdd extends React.Component{
 // }
 
 ReactDOM.render(<IssueList />, contentNode);
+
+if(module.hot) module.hot.accept();
